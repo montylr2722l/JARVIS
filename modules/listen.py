@@ -10,7 +10,7 @@ def listen():
 
         recognizer.adjust_for_ambient_noise(source)
 
-        audio = recognizer.listen(source)
+        audio = recognizer.listen(source, timeout=5, phrase_time_limit=5)
 
     try:
 

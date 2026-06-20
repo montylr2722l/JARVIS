@@ -1,18 +1,28 @@
 from modules.listen import listen
 from modules.speak import speak
-from modules.commands import execute
 from modules.greet import greet
+from modules.commands import execute
 
 greet()
 
 while True:
 
-    command = listen()
+    wake_word = listen()
 
-    if command:
+    if "exit" in wake_word:
+        speak("Goodbye Vishnu")
+        break
 
-        if "exit" in command:
-            speak("Goodbye Vishnu")
-            break
+    if "jarvis" in wake_word:
 
-        execute(command)
+        speak("Yes Vishnu")
+
+        command = listen()
+
+        if command:
+
+            if "exit" in command:
+                speak("Goodbye Vishnu")
+                break
+
+            execute(command)
